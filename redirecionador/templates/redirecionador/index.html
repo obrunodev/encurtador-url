@@ -7,9 +7,15 @@
     <div class="container">
         <h1>Links gerados</h1>
 
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Gerar</button>
+        </form>
+
         <ul>
             {% for link in links %}
-                <li>{{ link }}</li>
+                <li><a href="{{ link.url_curta }}" target="_blank">{{ link }}</a> - Cliques: {{ link.clicks }}</li>
             {% endfor %}
         </ul>
     </div>
